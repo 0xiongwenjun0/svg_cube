@@ -1,0 +1,55 @@
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+html body {
+  height: 100%;
+  width: 100%;
+}
+html body .page .state {
+  height: 300px;
+  width: 300px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+html body .page .state .container {
+  transform-style: preserve-3d;
+  position: relative;
+  height: 300px;
+  width: 300px;
+  transform: rotateX(0deg) rotateY(0deg);
+}
+html body .page .state .container svg {
+  position: absolute;
+  height: 300px;
+  width: 300px;
+  stroke-width: 5px;
+  stroke: #a52a2a;
+  fill: transparent;
+}
+html body .page .state .container svg .rect {
+  height: 300px;
+  width: 300px;
+}
+html body .page .state .container .top {
+  transform: rotateX(90deg) translateZ(150px);
+}
+html body .page .state .container .bottom {
+  transform: rotateX(-90deg) translateZ(150px);
+}
+html body .page .state .container .left {
+  transform: rotateY(-90deg) translateZ(150px);
+}
+html body .page .state .container .right {
+  transform: rotateY(90deg) translateZ(150px);
+}
+html body .page .state .container .front {
+  transform: rotateY(0deg) translateZ(150px);
+}
+html body .page .state .container .behind {
+  transform: rotateY(180deg) translateZ(150px);
+}

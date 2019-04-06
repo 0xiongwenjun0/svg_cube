@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./style.css">
+    <title>立方体</title>
+</head>
+
+<body>
+    <div class="page">
+        <div class="state"><!-- 定位-->
+            <div class="container"><!--旋转-->
+                <!-- 前 -->
+                <svg xmlns="http://www.w3/org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" class="front">
+                    <rect class="rect"></rect>
+                    <circle x="0" y="0" r="5" stroke="none" fill="red">
+                        <animateMOtion dur="3s" begin="infinite">
+                            <mpath xlink:href="#frontY"></mpath>
+                        </animateMOtion>
+                    </circle>
+                    <circle x="0" y="0" r="5" stroke="none" fill="blue">
+                        <animateMOtion dur="3s" begin="infinite">
+                            <mpath xlink:href="#frontX"></mpath>
+                        </animateMOtion>
+                    </circle>
+                    <path fill="#fff" stroke="#000" stroke-width="1.5" stroke-opacity="null" fill-opacity="null"
+                        opacity="0.5" d="m150.75,0.75l0,300" id="frontY" />
+                    <path fill="#fff" stroke="#000" stroke-width="1.5" stroke-opacity="null" fill-opacity="null"
+                        opacity="0.5" d="m300,150c-300,0 -300,0 -300,0" id="frontX" />
+                </svg>
+                <!-- 后 -->
+                <svg xmlns="http://www.w3/org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" class="behind">
+                    <rect class="rect "></rect>
+                    <circle x="0" y="0" r="5" stroke="none" fill="red">
+                        <animateMOtion dur="3s" begin="infinite">
+                            <mpath xlink:href="#behindY"></mpath>
+                        </animateMOtion>
+                    </circle>
+                    <circle x="0" y="0" r="5" stroke="none" fill="blue">
+                        <animateMOtion dur="3s" begin="infinite">
+                            <mpath xlink:href="#behindX"></mpath>
+                        </animateMOtion>
+                    </circle>
+                    <path fill="#fff" stroke="#000" stroke-width="1.5" stroke-opacity="null" fill-opacity="null"
+                        opacity="0.5" d="m150,300c0,0 1,-300 0,-300" id="behindY" />
+                    <path fill="#fff" stroke="#000" stroke-width="1.5" stroke-opacity="null" fill-opacity="null"
+                        opacity="0.5" d="m300,150c-300,0 -300,0 -300,0" id="behindX" />
+                </svg>
+
+                <!-- 左 -->
+                <svg xmlns="http://www.w3/org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" class="left">
+                    <rect class="rect "></rect>
+                    <circle x="0" y="0" r="5" stroke="none" fill="blue">
+                        <animateMOtion dur="3s" begin="infinite">
+                            <mpath xlink:href="#leftX"></mpath>
+                        </animateMOtion>
+                    </circle>
+                    <path fill="#fff" stroke="#000" stroke-width="1.5" stroke-opacity="null" fill-opacity="null"
+                        opacity="0.5" d="m300,150c-300,0 -300,0 -300,0" id="leftX" />
+                </svg>
+
+                <!-- 右 -->
+                <svg xmlns="http://www.w3/org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" class="right">
+                    <rect class="rect "></rect>
+                    <circle x="0" y="0" r="5" stroke="none" fill="blue">
+                        <animateMOtion dur="3s" begin="infinite">
+                            <mpath xlink:href="#rightX"></mpath>
+                        </animateMOtion>
+                    </circle>
+                    <path fill="#fff" stroke="#000" stroke-width="1.5" stroke-opacity="null" fill-opacity="null"
+                        opacity="0.5" d="m300,150c-300,0 -300,0 -300,0" id="rightX" />
+                </svg>
+
+                <!-- 上 -->
+                <svg xmlns="http://www.w3/org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" class="top">
+                    <rect class="rect "></rect>
+                    <circle x="0" y="0" r="5" stroke="none" fill="red">
+                        <animateMOtion dur="3s" begin="infinite">
+                            <mpath xlink:href="#topY"></mpath>
+                        </animateMOtion>
+                    </circle>
+                    <path fill="#fff" stroke="#000" stroke-width="1.5" stroke-opacity="null" fill-opacity="null"
+                        opacity="0.5" d="m150.75,0.75l0,300" id="topY" />
+                </svg>
+
+                <!-- 下 -->
+                <svg xmlns="http://www.w3/org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" class="bottom">
+                    <rect class="rect "></rect>
+                    <circle x="0" y="0" r="5" stroke="none" fill="red">
+                        <animateMOtion dur="3s" begin="infinite">
+                            <mpath xlink:href="#bottomY"></mpath>
+                        </animateMOtion>
+                    </circle>
+                    <path fill="#fff" stroke="#000" stroke-width="1.5" stroke-opacity="null" fill-opacity="null"
+                        opacity="0.5" d="m150.75,0.75l0,300" id="bottomY" />
+                </svg>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/3.3.0/jquery.min.js"></script>
+    <script>
+        var X = 0;//记录X轴旋转过的角度
+        var Y = 0;//记录Y轴旋转过的角度
+        // 旋转控制
+        $('.container').mousedown(function (event) {
+            var mousedownX = event.clientX;
+            var mousedownY = event.clientY;
+            $('body').mousemove(function (event) {
+                var mousemoveX = event.clientX;
+                var mousemoveY = event.clientY;
+                var scaleY = ((mousemoveX - mousedownX) / 200);
+                var scaleX = ((mousemoveY - mousedownY) / 200);
+                Y = ((Y + scaleY) % 360);
+                X = ((X + scaleX) % 360);
+                console.log(oldscalex)
+                $('.container').animate({}, function () {
+                    $('.container').css({ 'transform': `rotateX(${X}deg) rotateY(${Y}deg)` });
+                })
+            })
+        })
+        $('body').mouseup(function () {
+            $('body').unbind('mousemove');
+            $('body').unbind('mousedown');
+        })
+        // 动画控制
+        $(document).ready(function () {
+            const animate = document.getElementsByTagName('animateMotion');
+            // 先运行一次动画
+            // 0 frontY 1 frontX 2 behindY 3 behindX 4 leftX 5 rightX 6 topY 7 bottomY
+            var frontY = animate[0], frontX = animate[1],
+                behindY = animate[2], behindX = animate[3],
+                leftX = animate[4], rightX = animate[5],
+                topY = animate[6], bottomY = animate[7];
+            // Y面球体运动
+            (() => {
+                //先执行一次
+                frontY.beginElement();
+                setTimeout(() => {
+                    bottomY.beginElement();
+                }, 3000);
+                setTimeout(() => {
+                    behindY.beginElement();
+                }, 6000);
+                setTimeout(() => {
+                    topY.beginElement();
+                }, 9000);
+                // 循环执行动画
+                var time = setInterval(() => {
+                    frontY.beginElement();
+                    setTimeout(() => {
+                        bottomY.beginElement();
+                    }, 3000);
+                    setTimeout(() => {
+                        behindY.beginElement();
+                    }, 6000);
+                    setTimeout(() => {
+                        topY.beginElement();
+                    }, 9000);
+                }, 12000);
+            })();
+            // X面球体运动
+            (() => {
+                //先执行一次
+                frontX.beginElement();
+                setTimeout(() => {
+                    leftX.beginElement();
+                }, 3000);
+                setTimeout(() => {
+                    behindX.beginElement();
+                }, 6000);
+                setTimeout(() => {
+                    rightX.beginElement();
+                }, 9000);
+                // 循环执行动画
+                var time = setInterval(() => {
+                    frontX.beginElement();
+                    setTimeout(() => {
+                        leftX.beginElement();
+                    }, 3000);
+                    setTimeout(() => {
+                        behindX.beginElement();
+                    }, 6000);
+                    setTimeout(() => {
+                        rightX.beginElement();
+                    }, 9000);
+                }, 12000);
+            })();
+        })
+    </script>
+</body>
+
+</html>

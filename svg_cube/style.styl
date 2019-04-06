@@ -1,0 +1,50 @@
+html
+    margin 0
+    padding 0
+    height 100%
+    width 100%
+    body
+        height 100%
+        width 100%
+        .page
+            .state
+                height 300px
+                width 300px
+                position absolute
+                top 50%
+                left 50%
+                transform translate(-50%,-50%)//修正位置
+                .container
+                    transform-style preserve-3d
+                    position relative
+                    height 300px
+                    width 300px
+                    transform rotateX(0deg) rotateY(0deg)
+                    // animation scale 12s infinite
+                    // @keyframes scale {
+                    //     100%{
+                    //         transform rotateY(360deg) rotateX(-36deg)
+                    //         }
+                    // }
+                    svg
+                        position absolute
+                        height 300px
+                        width 300px
+                        stroke-width 5px
+                        stroke brown
+                        fill transparent //填充用透明
+                        .rect
+                            height 300px
+                            width 300px
+                    .top
+                        transform rotateX(90deg) translateZ(150px)
+                    .bottom 
+                        transform rotateX(-90deg) translateZ(150px)
+                    .left
+                        transform rotateY(-90deg) translateZ(150px)
+                    .right
+                        transform rotateY(90deg) translateZ(150px)
+                    .front
+                        transform rotateY(0deg) translateZ(150px)
+                    .behind
+                        transform rotateY(180deg) translateZ(150px)
